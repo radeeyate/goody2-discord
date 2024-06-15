@@ -51,6 +51,10 @@ async def processMessage(userID, message):
 
             line = line.decode("utf-8")
             print(line)
+            if "too_short" in line:
+                return "Your message is too short."
+            if "too_long" in line:
+                return "Your message is too long."
             if "max_turns" in line:
                 await updateConversationToken(userID, "")
                 return "Max messages reached. Send g2!reset to reset."
